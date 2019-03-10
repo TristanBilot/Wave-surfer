@@ -2,6 +2,7 @@ class Obstacle {
   private PImage image;
   private float x;
   private float y;
+  public int vitesse;
   /* A la création, l'obstacle n'est pas sensible à la gravité et au vent */
   private boolean isUnderGravity;
   

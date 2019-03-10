@@ -10,30 +10,28 @@ class Generateur {
     this.widthJeu = widthJeu;
   }  
   
-  public Obstacle genererObstacle() {
-    int random = floor(random(1, 5));
-    int randomY = floor(random(1, heightJeu)); // enlever le ground
-      
+  public synchronized Obstacle genererObstacle() {
+    int random = floor(random(1, 3));
+    int randomY = floor(random(1, heightJeu)); // enlever le ground      
     int positionApparission = widthJeu + 50 ; // a droite de l'écran
     PImage randomImg = null;
-    
-    random = 1; // a enlever
+  
     switch(random) {
       case 1:
-        randomImg = loadImage("personnage.png");
+        randomImg = loadImage("missile.png");
         break;
-        
+       case 2:
+         randomImg = loadImage("missile2.png");
+         break;
       default:
        break;
     }
     Obstacle o = new Obstacle(randomImg, positionApparission, randomY);
-    print(positionApparission);
-    print(randomY);
     obstacles.add(o);
     return o;
   }
   
-  public ArrayList<Obstacle> getObstacles() {
+  public synchronized ArrayList<Obstacle> getObstacles() {
     return obstacles;
   }
 }
